@@ -1,0 +1,181 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+y2:sin(q1)*l1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xm1:0.5*x2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ym1:0.5*y2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x3:x2+cos(q1+q2)*l2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y3:y2+sin(q1+q1)*l2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ym2:y2+0.5*sin(q1+q2)*l2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xm2:x2+0.5*cos(q1+q2)*l2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x4:x3+cos(q1+q2+q3)*l3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y4:y3+sin(q1+q2+q3)*l3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xm3:x3+0.5*cos(q1+q2+q3)*l3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ym3:y3+0.5*sin(q1+q2+q3)*l3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+J1:1/12*m1*l1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+J2:1/12*m2*l2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+J3:1/12*m3*l3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+qdot:diff(q,t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q1dot:diff(q1,t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q2dot:diff(q2, t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q3dot:diff(q3, t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+E_kinrot:1/2*J1*q1dot^2+1/2*J2*(q1dot+q2dot)^2+1/2*J3*(q1dot+q2dot+q3dot)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v1sq:diff(xm1,t)^2+diff(ym1,t)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v2sq:diff(xm2,t)^2+diff(ym2,t)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v3sq:diff(xm3,t)^2+diff(ym3,t)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+E_kintrans:1/2*m*v1sq+1/2*m2*v2sq+1/2*m3*v3sq;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+E_pot:g*(m1*ym1+m2*ym2+m3*ym3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L:E_kinrot+E_kintrans-E_pot;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L1:diff(L, q1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L2: diff(L, q2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L3: diff(L, q3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L1dot: diff(L, q1dot);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L1dott:diff(L1dot, t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L2dot:diff(L, q2dot);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L2dott: diff(L2dot, t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L3dot:diff(L, q3dot);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L3dott:diff(L3dot, t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gfactor(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gfactor(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t1:L1dott-L1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t2: L2dott-L2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t3:L3dott-L3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ode2(t1=0, t2=0, t3=0, q1(t), q2(t), q3(t), t);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
