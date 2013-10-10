@@ -1,3 +1,150 @@
 To calculate deformations and stresses of structures, \begriff{finite element analysis} is an important and often used method. It divides the structure in several points, calles \begriff{nodes}, and \begriff{elements} between those nodes. 
+\bigskip
 
-As the finite element analysis divides a part in very many elements and there are a lot of equations to solve for every node, the finite element analysis was not very popular until the 1950s. With the rise of the computer it was possible to solve thousands of equations in a few minutes. The more the computer was developed, the more programs were developed.
+As the finite element analysis divides a part in very many elements and there are a lot of equations to solve for every node, the finite element analysis was not very popular until the 1950s. With the rise of the computer it was possible to solve thousands of equations in a few minutes. The more the computer was developed, the more programs for finite element analysis were developed.
+
+\subsection{A short trip to Finite Elements Analysis (FEA)}
+In the following subsection I will give a short review about finite element analysis showing on the example of an one dimensional bar leading to methods of solving more complex problems of two- and three-dimensional problems.
+\bigskip
+
+Let us assume that the rod is on simple support and under a constant axial load of $q_0$, length $L$, Young's Module $E$ and cross-section area $A$:
+\bigskip
+
+\begin{center}
+\includegraphics[scale=1]{OneDimensionalBar.eps}
+\end{center}
+\bigskip
+From the elementary courses of mechanics we know that
+\begin{align}
+EA\,\frac{du}{dx}+q_0=0 \label{Rod_Main}
+\end{align}
+As we now proceed we can assume any trial function $û(x)$ that satisfies the boundary conditions that $û=0$ at $x=0$ and $\frac{dû}{dx}=0$ at $x=L$.
+
+Let $û$ be a polynomial function of $x$ with 
+\begin{align}
+û(x)=c_0\,+\,c_1\,x\,+\,c_2\,x
+\end{align}
+with the unknown constants $c_0$, $c_1$ and $c_2$. According to the boundary conditions we have $c_0=0$ and $c_1=-c_2\,L$. Now our trial function looks like
+\begin{align}
+û(x)=-2c_2Lx\,+\,c_2x=c_2(x\,-\,2Lx)
+\end{align}
+As we substitute $û$ in eq.\ref{Rod_Main} we come to the following equation:
+\begin{align}
+2AEc_2+q_0=R_d
+\end{align}
+with $R_d$ as the \begriff{residual}. We see that for $c_2=\frac{-q_0}{2AE}$ the residual is equal to zero on every point of the rod. We will see later, that this will not happen for every trial function. As the residual is equal to zero on every point our solution is equal to the exact solution:
+\begin{align}
+û(x)=(2xL-x²)\frac{q_0}{2AE}=u(x)
+\end{align}
+Assuming a different trial solution, e.g. $û(x)=c_0\,sin(\frac{\pi\,x}{2L})$, we see that the boundary conditions $û=0$ at $x=0$ and $\frac{dû}{dx}=0$ at $x=L$ are satisfied. As the equation has only one free parameter, $c_0$, it is called a \begriff{one-parameter solution}.
+
+As we substitute $\frac{d^2û}{dx^2}$ again in eq.\ref{Rod_Main} we come to:
+\begin{align}
+-EA\, c_0\,sin\left(\frac{\pi\,x}{2L}\right)\frac{\pi^2}{4L^2}+q_0=R_d
+\end{align}
+
+We see that there is no constant $c_0$ that makes $R_d$ equal to zero on every point of the rod. We can try to make $R_d$ equal to zero on one point (for example $x=0.5L$), but the errors would be quite huge. 
+
+An opportunity to make the mistakes smaller is to add more parameters to our trial solution like
+\begin{align}
+û(x)=c_0\,sin\left(\frac{\pi\,x}{2L}\right)\,+\,c_1\,sin\left(\frac{3\,\pi\,x}{2l}\right)\,+\,c_2\,sin\left(\frac{5\,\pi\,x}{2L}\right)\,+...
+\end{align}
+which decreases the mistake the more parameters we invent how fig.\ref{ExactVSParameter} shows. This technique is called the \begriff{point collocation technique}.
+
+\bigskip
+An other method is the \begriff{weighted residual technique}, where $W(x)$ is the \begriff{weighted function}. We will multiplicate the residual of our trial function with this weighted function and integrate it over the whole area. 
+\begin{align}
+\int\,W(x)\,R_d(x)\,dx=0
+\end{align}
+Theoretically we can chose every function as weighted function as long as they are integrable, but \eigenname{Galerkin} introduced the idea of letting $W(x)$ be $û(x)$ itself in 1915, which works pretty well with most problems (see fig.\ref{ExactVSGalerkin})
+
+\bigskip
+So for our problem with the one dimensional rod $W(x)$ will be
+\begin{align}
+W(x)=sin\left(\frac{\pi\,x}{2L}\right)
+\end{align}
+
+And the integral would be
+\begin{align}
+\int\,sin\left(\frac{\pi\,x}{2L}\right)\,\left(-EA\, c_0\,sin\left(\frac{\pi\,x}{2L}\right)\frac{\pi^2}{4L^2}+q_0\right)\,dx=0
+\end{align}
+which will lead to
+\begin{align}
+c_0=\frac{16\,L^2q_0}{\pi^3EA}
+\end{align}
+\bigskip
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[scale=0.5]{ExactVSParameter.eps} 
+\caption{The exact solution compared to the one-, two-, and three-parameter solution}
+\label{ExactVSParameter}
+\end{center}
+\end{figure}
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[scale=0.8]{ExactVSGalerkin.eps} 
+\caption{The exact solution compared to the solution with a \eigenname{Galerkin}-weighted function}
+\label{ExactVSGalerkin}
+\end{center}
+\end{figure}
+
+{\bf Note:} The \eigenname{Galerkin}-solution here is made for a one-parameter trial function. For a more-parameter trial function with $û(x)\,=\,\sum c_i\,û_i(x)$ there would be weighted functions $W_i$ that make the approximative solution even more exact
+\bigskip 
+
+\subsection{Basic methods of my FEA-program}
+In the following I will derive the equations used in my one-dimensional finite element program, first for the static case and then, much more complicated, for the dynamic case. I will only give a very short overview of the theoretical basics of FEA, the interested reader is referred to \cite{seshu} and \cite{ramamurty}.
+
+\bigskip
+\bigskip
+
+\begin{minipage}{\textwidth}
+    \begin{minipage}[t]{0.5\textwidth}
+     
+     Our one-dimensional beam element consists of two nodes at each end. Every node has two degrees of freedom as it can move normally to the beams axis and rotate around an axis normally to the grid. We define a vector $\vec{q}$  describing the deformations of one element and a vector $\vec{f}$ describing the forces and torques attached to the nodes:
+    \end{minipage}
+    \hfill
+    %\mbox{\numexpr{0.95-#5}} geht vielleicht auch irgendwie
+    \begin{minipage}[t]{0.5\textwidth}				%ehemals 0.45 [LARS]
+      ~\\[-1ex]%fakezeile, um beide minipages mit der t-Zeile auszurichten
+       \psfrag{n1}{$u_1$}
+      \centerline{\includegraphics[scale=1]{beamElement1.eps}}
+    \end{minipage}
+  \end{minipage}
+
+\begin{align}
+\vec{q}&=\left(\begin{array}{c}
+u_1 \\ 
+\phi_1 \\ 
+u_2 \\ 
+\phi_2
+\end{array} \right)&\vec{f}=\left(\begin{array}{c}
+F_1 \\ 
+M_1 \\ 
+F_2 \\ 
+M_2
+\end{array}\right)\nonumber
+\end{align}
+where $u_1$ and $\phi_1$ are the displacements and rotations of the first node, respectively, and  $u_2$ and $\phi_2$ for the second node in the same manner. $F_i$ and $M_i$ are for the force and torques at node $i$.
+\bigskip 
+
+We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For that we will look at a beam, deformed in only one degree of freedom, based on the \begriff{Beam Theory} of \eigenname{Euler} and \eigenname{Bernoulli}. There are a whole bunch of books about the Beam Theory, the interested reader can read for example \cite{timoschenko}. For deriving the k-matrix we will deform our beam element four times, so it will just deform in one of the four degrees of freedom.\\
+\bigskip
+\begin{center}
+\includegraphics[scale=1.2]{fourDeformations}
+\end{center}
+\bigskip 
+
+\begin{minipage}{\textwidth}
+    \begin{minipage}[t]{0.5\textwidth}
+     
+     For a beam of lenght $l$ I will demonstrate the derivation of the k-matrix on an example of a beam which has only a displacement in its first degree of freedom.
+    \end{minipage}
+    \hfill
+    %\mbox{\numexpr{0.95-#5}} geht vielleicht auch irgendwie
+    \begin{minipage}[t]{0.5\textwidth}				%ehemals 0.45 [LARS]
+      ~\\[-1ex]%fakezeile, um beide minipages mit der t-Zeile auszurichten
+       \psfrag{u1}{$u_1$}
+      \centerline{\includegraphics[scale=1]{deformBar1.eps}}
+    \end{minipage}
+  \end{minipage}

@@ -1,8 +1,6 @@
 \select@language {english}
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}
 \contentsline {subsection}{\numberline {1.1}What is a Robot? What is a Manipulator?}{3}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}What is so important about robots being cooperative?}{3}{subsection.1.2}
-\contentsline {section}{\numberline {2}Rigid Manipulators}{3}{section.2}
-\contentsline {section}{\numberline {3}Cooperativ Rigid Manipulators}{3}{section.3}
-\contentsline {section}{\numberline {4}Flexible Manipulators}{3}{section.4}
-\contentsline {section}{\numberline {5}Cooperative Flexible Manipulators}{3}{section.5}
+\contentsline {section}{\numberline {2}Flexible Manipulators}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}A short trip to Finite Elements Analysis (FEA)}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Basic methods of my FEA-program}{5}{subsection.2.2}
