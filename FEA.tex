@@ -77,7 +77,7 @@ c_0=\frac{16\,L^2q_0}{\pi^3EA} \nonumber
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[scale=0.5]{ExactVSParameter} 
+\includegraphics[scale=0.6]{ExactVSParameter} 
 \caption{The exact solution compared to the one-, two-, and three-parameter solution}
 \label{ExactVSParameter}
 \end{center}
@@ -99,10 +99,11 @@ In the following I will derive the equations used in my one-dimensional finite e
 \bigskip
 \bigskip
 
+
 \begin{minipage}{\textwidth}
     \begin{minipage}[t]{0.5\textwidth}
      
-     Our one-dimensional beam element consists of two nodes at each end. Every node has two degrees of freedom as it can move normally to the beams axis and rotate around an axis normally to the grid. We define a vector $\vec{q}$  describing the deformations of one element and a vector $\vec{f}$ describing the forces and torques attached to the nodes:
+     \paragraph{The Beam Element} Our one-dimensional beam element consists of two nodes at each end. Every node has two degrees of freedom as it can move normally to the beams axis and rotate around an axis normally to the grid. We define a vector $\vec{q}$  describing the deformations of one element and a vector $\vec{f}$ describing the forces and torques attached to the nodes:
     \end{minipage}
     \hfill
     %\mbox{\numexpr{0.95-#5}} geht vielleicht auch irgendwie
@@ -135,6 +136,7 @@ M_2
 \end{align}
 where $u_1$ and $\phi_1$ are the displacements and rotations of the first node, respectively, and  $u_2$ and $\phi_2$ for the second node in the same manner. $F_i$ and $M_i$ are for the force and torques at node $i$.
 \bigskip 
+\paragraph{The k-Matrix}
 
 We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For that we will look at a beam, deformed in only one degree of freedom, based on the \begriff{Beam Theory} of \eigenname{Euler} and \eigenname{Bernoulli}. There are a whole bunch of books about the Beam Theory, the interested reader can read for example \cite{timoschenko}. For deriving the k-matrix we will deform our beam element four times, so it will just deform in one of the four degrees of freedom.\\
 \bigskip
@@ -144,13 +146,13 @@ We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For
 \bigskip 
 
 \begin{minipage}{\textwidth}
-    \begin{minipage}[t]{0.5\textwidth}
+    \begin{minipage}[t]{0.3\textwidth}
      
-     For a beam of lenght $l$ I will demonstrate the derivation of the k-matrix on an example of a beam which has only a displacement in its first degree of freedom.
+     For a beam of lenght $l$ I will demonstrate the derivation of the k-matrix on an example of a beam which has only a displacement in its first degree of freedom. I will use the Beam Theory of \eigenname{Euler} and \eigenname{Bernoulli} to calculate the needed forces and torques at each node.
     \end{minipage}
     \hfill
     %\mbox{\numexpr{0.95-#5}} geht vielleicht auch irgendwie
-    \begin{minipage}[t]{0.5\textwidth}				%ehemals 0.45 [LARS]
+    \begin{minipage}[t]{0.7\textwidth}				%ehemals 0.45 [LARS]
       ~\\[-1ex]%fakezeile, um beide minipages mit der t-Zeile auszurichten
        
       \centerline{
@@ -159,6 +161,54 @@ We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For
       \psfrag{f1}{$F_1$}
       \psfrag{f2}{$F_2$}
       \psfrag{u1}{$u_1$}
-      \includegraphics[scale=1]{deformBar1.eps}}
+      \includegraphics[scale=1.5]{deformBar1.eps}}
     \end{minipage}
   \end{minipage}
+  \bigskip
+  
+  The moment in the beam $M(x)$ for a $x$ running from left to right over the beam's axis is:
+  \begin{align}
+  M(x)=F_1\,x- M_1 \label{Momentenverlauf}
+  \end{align}
+  Integrating $EI\,w''=M(x)$ twice with \ref{Momentenverlauf} gives:
+  \begin{align}
+  w'&=\frac{1}{EI}\left(\frac{1}{2}F_1\,x^2-M_1\,x+C_1\right) \label{neigungslinie}\\
+  w&=\frac{1}{EI}\left(\frac{1}{6}F_1\,x^3-\frac{1}{2}M_1\,x^2+c_1\,x+C_2\right) \label{biegelinie}
+  \end{align}
+  With the boundary conditions
+  \begin{align}
+  w(0)=u_1; && w'(0)=0; &&& w(l)=0; &&& w'(l)=0 \nonumber
+  \end{align}
+  inserted in \ref{biegelinie} and \ref{neigungslinie} we get the force-vector $\vec{f}=k_1*u_1$:
+  \begin{align}
+  \vec{f}=\frac{EI}{l^3}\left(\begin{array}{c}
+  12 \\ 
+  6\,l \\ 
+  -12 \\ 
+  6\,l
+  \end{array} \right)\,u_1
+  \end{align}
+  Analogously we find $k_2$, $k_3$ and $k_4$ for deformation of an other degree of freedom. Because of Superposition we can write for $\vec{f}$ for deformation of all degrees of freedom just the sum of all deformations:
+  \begin{align}
+  \vec{f}&=\sum\,\vec{k_i}\,\vec{q_i} \nonumber \\
+  \vec{f}&=\vec{k_1}\,\vec{q_1}+\vec{k_2}\,\vec{q_2}+\vec{k_3}\,\vec{q_3}+\vec{k_4}\,\vec{q_4} \nonumber \\
+  \vec{f}&=\vec{k}\,\vec{q} \label{grundgleichung}
+  \end{align}
+  with
+  \begin{align}
+  \vec{k}=\left(\begin{array}{cccc}
+  \vec{k_1} & \vec{k_2} & \vec{k_3} & \vec{k_4}
+  \end{array} \right) \label{k-matrix}
+  \end{align}
+  For our one dimensional beam element we can derive $\vec{k}$ as:
+  \begin{align}
+  \vec{k}=\frac{EI}{l^3}\left[\begin{array}{cccc}
+  12 & 6\,l & -12 & 6\,l \\ 
+  6\,l & 4\,l^2 & -6\,l & 2\,l^2 \\ 
+  -12 & -6 \,l & 12 & -6\,l^2 \\ 
+  6\,l & 2\,l^2 & -6\,l^2 & 4\,l^2
+  \end{array} \right] \label{beam-k-matrix}
+  \end{align}
+  \bigskip
+  
+  \paragraph{Shape Functions} In our model forces and torques can only be applied at the nodes, but unluckily in many cases forces and torques are acting somewhere between the nodes. For this reason you need shape functions defining which part of the force is acting on which node of the element. A shape functions of a node has the property that it will be 1 at that specific node and 0 on all other nodes, which is trivial, because forces acting on that node will act with 100\% on that node and forces acting on other nodes will not affect that node. I will show two different types of famous shape functions
