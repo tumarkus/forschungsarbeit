@@ -13,7 +13,7 @@ Let us assume that the rod is on simple support and under a constant axial load 
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=1]{OneDimensionalBar}
+\includegraphics[scale=1]{figs/OneDimensionalBar}
 \caption{One dimensional bar}
 \end{center}
 \end{figure}
@@ -39,7 +39,7 @@ As we substitute $û$ in eq.\ref{Rod_Main} we come to the following equation:
 \end{align}
 with $R_d$ as the \begriff{residual}. We see that for $c_2=\frac{-q_0}{2AE}$ the residual is equal to zero on every point of the rod. We will see later, that this will not happen for every trial function. As the residual is equal to zero on every point our solution is equal to the exact solution:
 \begin{align}
-û(x)=(2xL-x²)\frac{q_0}{2AE}=u(x) \nonumber
+û(x)=(2xL-x^2)\frac{q_0}{2AE}=u(x) \nonumber
 \end{align}
 Assuming a different trial solution, e.g. $û(x)=c_0\,sin(\frac{\pi\,x}{2L})$, we see that the boundary conditions $û=0$ at $x=0$ and $\frac{dû}{dx}=0$ at $x=L$ are satisfied. As the equation has only one free parameter, $c_0$, it is called a \begriff{one-parameter solution}.
 
@@ -81,14 +81,14 @@ c_0=\frac{16\,L^2q_0}{\pi^3EA} \nonumber
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[scale=0.6]{ExactVSParameter} 
+\includegraphics[scale=0.6]{figs/ExactVSParameter} 
 \caption{The exact solution compared to the one-, two-, and three-parameter solution}
 \label{ExactVSParameter}
 \end{center}
 \end{figure}
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[scale=0.8]{ExactVSGalerkin.eps} 
+\includegraphics[scale=0.8]{figs/ExactVSGalerkin.eps} 
 \caption{The exact solution compared to the solution with a \eigenname{Galerkin}-weighted function}
 \label{ExactVSGalerkin}
 \end{center}
@@ -120,7 +120,7 @@ In the following I will derive the equations used in my one-dimensional finite e
       \psfrag{u2}{$u_2$}
       \psfrag{p1}{$\phi_1$}
       \psfrag{p2}{$\phi_2$}      
-      \includegraphics[scale=1]{beamElement1.eps}}
+      \includegraphics[scale=1]{figs/beamElement1.eps}}
     \end{minipage}
   \end{minipage}
 
@@ -145,7 +145,7 @@ We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For
 \bigskip
 \begin{figure}
 \begin{center}
-\includegraphics[scale=1.2]{fourDeformations}
+\includegraphics[scale=1.2]{figs/fourDeformations}
 \caption{The four different basic deformations of a beam element}
 \end{center}
 \end{figure}
@@ -166,7 +166,7 @@ We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For
       \psfrag{f1}{$F_1$}
       \psfrag{f2}{$F_2$}
       \psfrag{u1}{$u_1$}
-      \includegraphics[scale=1.5]{deformBar1.eps}}
+      \includegraphics[scale=1.5]{figs/deformBar1.eps}}
     \end{minipage}
   \end{minipage}
   \bigskip
@@ -226,7 +226,7 @@ We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For
 \psfrag{l2}{$x=\frac{1}{2}l$}
 \psfrag{1}{1}
 \psfrag{0}{0}
-\includegraphics[scale=0.6]{shapeFunctions} 
+\includegraphics[scale=0.6]{figs/shapeFunctions} 
 \caption{Visualisation of the linear and the plumbed one dimensional shape function}
 \label{shapeFunctions}
 \end{center}
@@ -264,7 +264,7 @@ For the attached program \textbf{BEAM.m} I chose the plumbed shape function beca
 \psfrag{1, 2}{1, 2}
 \psfrag{3, 4}{3, 4}
 \psfrag{5, 6}{5, 6}
-\includegraphics[scale=0.6]{assembly} 
+\includegraphics[scale=0.6]{figs/assembly} 
 \caption{Assembly of two beam elements}
 \label{assembly}
 \end{center}
