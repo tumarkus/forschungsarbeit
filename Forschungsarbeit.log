@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=latex 2013.8.26)  11 OCT 2013 17:21
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=latex 2013.8.26)  14 OCT 2013 15:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1005,58 +1005,57 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
  [2] (./FEA.tex
 File: OneDimensionalBar.eps Graphic file (type eps)
- <OneDimensionalBar.eps>
+ <OneDimensionalBar.eps> [1]
 
-LaTeX Warning: Command \^ invalid in math mode on input line 22.
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 22.
+LaTeX Warning: Command \^ invalid in math mode on input line 26.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 22.
+LaTeX Warning: Command \^ invalid in math mode on input line 26.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 24.
-
-[3]
-
-LaTeX Warning: Command \^ invalid in math mode on input line 32.
+LaTeX Warning: Command \^ invalid in math mode on input line 26.
 
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 39.
+LaTeX Warning: Command \^ invalid in math mode on input line 28.
 
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 39.
+
+LaTeX Warning: Command \^ invalid in math mode on input line 36.
+
+
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 43.
+
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 43.
 (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 39.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 43.
 
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 39.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 43.
 
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 39.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 43.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 40.
+LaTeX Warning: Command \^ invalid in math mode on input line 44.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 40.
+LaTeX Warning: Command \^ invalid in math mode on input line 44.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 40.
+LaTeX Warning: Command \^ invalid in math mode on input line 44.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 42.
+LaTeX Warning: Command \^ invalid in math mode on input line 46.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 60.
+LaTeX Warning: Command \^ invalid in math mode on input line 64.
 
-[4]
+[2]
 File: ExactVSParameter.eps Graphic file (type eps)
  <ExactVSParameter.eps>
-Overfull \hbox (28.59532pt too wide) in paragraph at lines 80--81
+Overfull \hbox (28.59532pt too wide) in paragraph at lines 84--85
  [] 
  []
 
@@ -1066,53 +1065,53 @@ File: ExactVSGalerkin.eps Graphic file (type eps)
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 93.
+LaTeX Warning: Command \^ invalid in math mode on input line 97.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 93.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
-
- []
+LaTeX Warning: Command \^ invalid in math mode on input line 97.
 
 File: beamElement1.eps Graphic file (type eps)
 <beamElement1.eps>
-Overfull \hbox (2.43333pt too wide) in paragraph at lines 104--122
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 108--125
 [][]  [] 
  []
 
-[5]
+[3]
 File: fourDeformations.eps Graphic file (type eps)
- <fourDeformations.eps> [6]
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
-
- []
-
+ <fourDeformations.eps>
 File: deformBar1.eps Graphic file (type eps)
-<deformBar1.eps>
-Overfull \hbox (2.43332pt too wide) in paragraph at lines 149--166
+ <deformBar1.eps>
+Overfull \hbox (2.43332pt too wide) in paragraph at lines 155--171
 [][]  [] 
  []
 
-[7]) (./bibliography.tex [8])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 31.
- [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 31.
+[4] [5]
+File: shapeFunctions.eps Graphic file (type eps)
+ <shapeFunctions.eps>
+Overfull \hbox (6.31184pt too wide) in paragraph at lines 229--230
+ [] 
+ []
+
+[6]
+File: assembly.eps Graphic file (type eps)
+ <assembly.eps>) (./bibliography.tex [7])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 34.
+ [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 34.
  (./Forschungsarbeit.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 31.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 31.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 34.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 34.
 Package rerunfilecheck Info: File `Forschungsarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: C228A89CEFAC3F699C9E3F669D913615;368.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 31.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 34.
  ) 
 Here is how much of TeX's memory you used:
- 10340 strings out of 495060
- 154618 string characters out of 3182053
+ 10354 strings out of 495060
+ 154847 string characters out of 3182053
  263699 words of memory out of 3000000
- 13321 multiletter control sequences out of 15000+200000
+ 13333 multiletter control sequences out of 15000+200000
  70065 words of font info for 67 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,17n,51p,679b,402s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,17n,51p,759b,381s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Forschungsarbeit.dvi (9 pages, 34404 bytes).
+Output written on Forschungsarbeit.dvi (10 pages, 42324 bytes).

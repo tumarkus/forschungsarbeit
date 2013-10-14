@@ -1,9 +1,10 @@
 \select@language {english}
-\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
-\contentsline {subsection}{\numberline {1.1}What is a Robot? What is a Manipulator?}{3}{subsection.1.1}
-\contentsline {section}{\numberline {2}Flexible Manipulators}{3}{section.2}
-\contentsline {subsection}{\numberline {2.1}A short trip to Finite Elements Analysis (FEA)}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Basic methods of my FEA-program}{5}{subsection.2.2}
-\contentsline {paragraph}{The Beam Element}{6}{section*.4}
-\contentsline {paragraph}{The k-Matrix}{6}{section*.5}
-\contentsline {paragraph}{Shape Functions}{8}{section*.6}
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}What is a Robot? What is a Manipulator?}{1}{subsection.1.1}
+\contentsline {section}{\numberline {2}Flexible Manipulators}{1}{section.2}
+\contentsline {subsection}{\numberline {2.1}A short trip to Finite Elements Analysis (FEA)}{1}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Basic methods of my FEA-program}{3}{subsection.2.2}
+\contentsline {paragraph}{The Beam Element}{4}{section*.5}
+\contentsline {paragraph}{The k-Matrix}{4}{section*.6}
+\contentsline {paragraph}{Shape Functions}{6}{section*.8}
+\contentsline {paragraph}{Assembling a Problem}{7}{section*.10}

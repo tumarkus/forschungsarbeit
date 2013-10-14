@@ -11,9 +11,13 @@ In the following subsection I will give a short review about finite element anal
 Let us assume that the rod is on simple support and under a constant axial load of $q_0$, length $L$, Young's Module $E$ and cross-section area $A$:
 \bigskip
 
+\begin{figure}
 \begin{center}
 \includegraphics[scale=1]{OneDimensionalBar}
+\caption{One dimensional bar}
 \end{center}
+\end{figure}
+
 \bigskip
 From the elementary courses of mechanics we know that
 \begin{align}
@@ -109,7 +113,6 @@ In the following I will derive the equations used in my one-dimensional finite e
     %\mbox{\numexpr{0.95-#5}} geht vielleicht auch irgendwie
     \begin{minipage}[t]{0.5\textwidth}				%ehemals 0.45 [LARS]
       ~\\[-1ex]%fakezeile, um beide minipages mit der t-Zeile auszurichten
-       
       \centerline{
       \psfrag {n1} {$n_1$}
       \psfrag{n2}{$n_2$}
@@ -140,9 +143,12 @@ where $u_1$ and $\phi_1$ are the displacements and rotations of the first node, 
 
 We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For that we will look at a beam, deformed in only one degree of freedom, based on the \begriff{Beam Theory} of \eigenname{Euler} and \eigenname{Bernoulli}. There are a whole bunch of books about the Beam Theory, the interested reader can read for example \cite{timoschenko}. For deriving the k-matrix we will deform our beam element four times, so it will just deform in one of the four degrees of freedom.\\
 \bigskip
+\begin{figure}
 \begin{center}
 \includegraphics[scale=1.2]{fourDeformations}
+\caption{The four different basic deformations of a beam element}
 \end{center}
+\end{figure}
 \bigskip 
 
 \begin{minipage}{\textwidth}
@@ -154,7 +160,6 @@ We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For
     %\mbox{\numexpr{0.95-#5}} geht vielleicht auch irgendwie
     \begin{minipage}[t]{0.7\textwidth}				%ehemals 0.45 [LARS]
       ~\\[-1ex]%fakezeile, um beide minipages mit der t-Zeile auszurichten
-       
       \centerline{
       \psfrag{m1}{$M_1$}
       \psfrag{m2}{$M_2$}
@@ -211,4 +216,58 @@ We now want to derive a matrix $\vec{k}$, so that $\vec{f}=\vec{k}*\vec{q}$. For
   \end{align}
   \bigskip
   
-  \paragraph{Shape Functions} In our model forces and torques can only be applied at the nodes, but unluckily in many cases forces and torques are acting somewhere between the nodes. For this reason you need shape functions defining which part of the force is acting on which node of the element. A shape functions of a node has the property that it will be 1 at that specific node and 0 on all other nodes, which is trivial, because forces acting on that node will act with 100\% on that node and forces acting on other nodes will not affect that node. I will show two different types of famous shape functions
+  \paragraph{Shape Functions} In our model forces and torques can only be applied at the nodes, but unluckily in many cases forces and torques are acting somewhere between the nodes. For this reason you need shape functions defining which part of the force is acting on which node of the element. A shape functions of a node has the property that it will be 1 at that specific node and 0 on all other nodes, which is trivial, because forces acting on that node will act with 100\% on that node and forces acting on other nodes will not affect that node. Also the sum of all shape functions has to be 1 at every location of the body. I will show two different types of famous shape functions.
+\bigskip
+
+\begin{figure}[!h]
+\begin{center}
+\psfrag{n1}[m][m]{first node}
+\psfrag{n2}[m][m]{second node}
+\psfrag{l2}{$x=\frac{1}{2}l$}
+\psfrag{1}{1}
+\psfrag{0}{0}
+\includegraphics[scale=0.6]{shapeFunctions} 
+\caption{Visualisation of the linear and the plumbed one dimensional shape function}
+\label{shapeFunctions}
+\end{center}
+\end{figure}
+In the linear shape function you use a linear function $s_l(x)=1-\frac{x}{l}$ for the left node and $s_r(x)=\frac{x}{l}$ for the right node. The forces acting with this model on the left and right node are
+\begin{align}
+f_l=\int_0^lq(x)\,s_l(x)\,dx+\sum_iF_i\,s_l(x_i) \nonumber \\
+f_r=\int_0^lq(x)\,s_r(x)\,dx+\sum_iF_i\,s_r(x_i) \nonumber
+\end{align}
+with $q(x)$ as a line force and $F_i$ as single forces. The same is also with torques.
+\bigskip
+
+An other advantage of this function is, that you can calculate the displacement on every point along the element using the shape functions with
+\begin{align}
+\vec{q(x)}=\vec{q_l}\,s_l(x)+\vec{q_r}\,s_r(x)
+\end{align}
+where $\vec{q_l}$ and $\vec{q_r}$ are the displacements at the left and right node.
+\bigskip
+
+The second method is simpler and is called the plumbed shape function. It is not that accurate like the linear shape function, but when using lots of elements or constant line forces (or slowly changing line forces) and single forces attached to the nodes it will not make any difference. Here you just attach all forces acting between the left node and the middle of the element to the left node and all forces acting between the middle of the element and the right node to the right node. So the forces attached to each node are given by
+\begin{align}
+f_l&=\int_0^{l/2}q(x)\,dx+\sum_iF_i &&0<x_i<l/2 \nonumber \\
+f_l&=\int_{l/2}^{l}q(x)\,dx+\sum_iF_i &&l/2<x_i<l \nonumber
+\end{align}
+For the attached program \textbf{BEAM.m} I chose the plumbed shape function because it is simple to calculate and it will not give different results as I have a constant line force anyway.
+\bigskip
+
+\paragraph{Assembling a Problem} As you may have noticed, I used small letters for k-matrix as well as for f-, and q-vector. This should indicate that the matrix is just for one element. If you want to assemble a matrix for the whole system you need to add all the matrices in respect to their global and nodal counting system.
+\bigskip 
+
+\begin{figure}[!h]
+\begin{center}
+\psfrag{nodal degree of freedom}[m][m]{nodal degree of freedom}
+\psfrag{global degree of freedom}[m][m]{global degree of freedom}
+\psfrag{1, 2}{1, 2}
+\psfrag{3, 4}{3, 4}
+\psfrag{5, 6}{5, 6}
+\includegraphics[scale=0.6]{assembly} 
+\caption{Assembly of two beam elements}
+\label{assembly}
+\end{center}
+\end{figure}
+
+As you can see in fig.\ref{assembly} every DOF has both a nodal number as well as a global number. 
